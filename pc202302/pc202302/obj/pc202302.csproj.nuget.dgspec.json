@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Salvador\\RiderProjects\\pc202302\\pc202302\\pc202302.csproj": {}
+    "C:\\Users\\Salvador\\Documents\\GitHub\\peee\\practica2PC202302\\pc202302\\pc202302\\pc202302.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Salvador\\RiderProjects\\pc202302\\pc202302\\pc202302.csproj": {
+    "C:\\Users\\Salvador\\Documents\\GitHub\\peee\\practica2PC202302\\pc202302\\pc202302\\pc202302.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Salvador\\RiderProjects\\pc202302\\pc202302\\pc202302.csproj",
+        "projectUniqueName": "C:\\Users\\Salvador\\Documents\\GitHub\\peee\\practica2PC202302\\pc202302\\pc202302\\pc202302.csproj",
         "projectName": "pc202302",
-        "projectPath": "C:\\Users\\Salvador\\RiderProjects\\pc202302\\pc202302\\pc202302.csproj",
+        "projectPath": "C:\\Users\\Salvador\\Documents\\GitHub\\peee\\practica2PC202302\\pc202302\\pc202302\\pc202302.csproj",
         "packagesPath": "C:\\Users\\Salvador\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Salvador\\RiderProjects\\pc202302\\pc202302\\obj\\",
+        "outputPath": "C:\\Users\\Salvador\\Documents\\GitHub\\peee\\practica2PC202302\\pc202302\\pc202302\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Salvador\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,9 +40,29 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "EntityFrameworkCore.CreatedUpdatedDate": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Humanizer": {
+              "target": "Package",
+              "version": "[2.14.1, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[6.6.2, )"
+            },
+            "Swashbuckle.AspNetCore.Annotations": {
+              "target": "Package",
+              "version": "[6.6.2, )"
             }
           },
           "imports": [

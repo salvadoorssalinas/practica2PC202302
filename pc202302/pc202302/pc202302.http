@@ -1,4 +1,4 @@
-@pc202302_HostAddress = http://localhost:5041
+@pc202302_HostAddress = http://localhost:7070
 
 GET {{pc202302_HostAddress}}/weatherforecast/
 Accept: application/json
