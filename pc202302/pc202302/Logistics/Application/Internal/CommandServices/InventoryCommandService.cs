@@ -24,7 +24,7 @@ public class InventoryCommandService(IInventoryRepository inventoryRepository, I
 
         try
         {
-            var inventory = new Inventory(command.ProductId, command.WarehouseId, command.MinimumStock, command.CurrentStock);
+            var inventory = new Inventory(command.ProductId, command.WarehouseId, command.MinimumStock, command.CurrentStock, command.Type);
             await inventoryRepository.AddAsync(inventory);
             await unitOfWork.CompleteAsync();
             return inventory;
@@ -57,12 +57,18 @@ public class InventoryCommandService(IInventoryRepository inventoryRepository, I
         }
         
         // update inventory
-        inventory.ProductId = command.ProductId;
-        inventory.WarehouseId = command.WarehouseId;
-        inventory.MinimumStock = command.MinimumStock;
-        inventory.CurrentStock = command.CurrentStock;
-        await unitOfWork.CompleteAsync();
-        return inventory;
+        inventory.Update(command);
+        try
+        {
+            inventoryRepository.Update(inventory);
+            await unitOfWork.CompleteAsync();
+            return inventory;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     public async Task<Inventory?> Handle(DeleteInventoryCommand command)

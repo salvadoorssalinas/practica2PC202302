@@ -29,6 +29,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         builder.Entity<Inventory>().Property(p => p.WarehouseId).IsRequired();
         builder.Entity<Inventory>().Property(p => p.MinimumStock).IsRequired();
         builder.Entity<Inventory>().Property(p => p.CurrentStock).IsRequired();
+        builder.Entity<Inventory>().Property(p => p.Type).IsRequired().HasMaxLength(20);
         
         // Apply SnakeCase Naming Convention
         builder.UseSnakeCaseWithPluralizedTableNamingConvention();

@@ -7,6 +7,6 @@ public static class InventoryResourceFromEntityAssembler
 {
     public static InventoryResource ToResourceFromEntity(Inventory entity)
     {
-        return new InventoryResource(entity.Id, entity.ProductId, entity.WarehouseId, entity.MinimumStock, entity.CurrentStock);
+        return new InventoryResource(entity.Id, entity.ProductId, entity.WarehouseId, entity.MinimumStock, entity.CurrentStock, entity.Type.ToString());
     }
 }
