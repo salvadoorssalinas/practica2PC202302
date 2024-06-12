@@ -1,7 +1,7 @@
 ﻿using pc202302.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using Microsoft.EntityFrameworkCore;
-//using pc202302.Logistics.Domain.Model.Entities;
+using pc202302.Logistics.Domain.Model.Aggregates;
 
 namespace pc202302.Shared.Infrastructure.Persistence.EFC.Configuration;
 
@@ -14,20 +14,21 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         builder.AddCreatedUpdatedInterceptor();
     }
     
-    //public DbSet<Plan> Plans { get; set; }
+    public DbSet<Inventory> Inventories { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
         
-        // Subscriptions Context
+        // Logistics Context
         
-        // Plans table
-        // builder.Entity<Plan>().HasKey(p => p.Id);
-        // builder.Entity<Plan>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        // builder.Entity<Plan>().Property(p => p.Name).IsRequired().HasMaxLength(100);
-        // builder.Entity<Plan>().Property(p => p.MaxUsers).IsRequired();
-        // builder.Entity<Plan>().Property(p => p.IsDefault).IsRequired();
+        // Inventories table
+        builder.Entity<Inventory>().HasKey(p => p.Id);
+        builder.Entity<Inventory>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Inventory>().Property(p => p.ProductId).IsRequired();
+        builder.Entity<Inventory>().Property(p => p.WarehouseId).IsRequired();
+        builder.Entity<Inventory>().Property(p => p.MinimumStock).IsRequired();
+        builder.Entity<Inventory>().Property(p => p.CurrentStock).IsRequired();
         
         // Apply SnakeCase Naming Convention
         builder.UseSnakeCaseWithPluralizedTableNamingConvention();
