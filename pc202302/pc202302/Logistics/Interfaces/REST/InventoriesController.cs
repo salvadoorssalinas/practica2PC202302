@@ -4,6 +4,7 @@ using pc202302.Logistics.Domain.Model.Queries;
 using pc202302.Logistics.Domain.Services;
 using pc202302.Logistics.Interfaces.REST.Resources;
 using pc202302.Logistics.Interfaces.REST.Transform;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace pc202302.Logistics.Interfaces.REST;
 
@@ -12,6 +13,12 @@ namespace pc202302.Logistics.Interfaces.REST;
 public class InventoriesController(IInventoryCommandService inventoryCommandService, IInventoryQueryService inventoryQueryService) : ControllerBase
 {
     [HttpPost]
+    [SwaggerOperation(
+        Summary = "Create an inventory.",
+        Description = "Creates an inventory.",
+        OperationId = "CreateInventory",
+        Tags = new[] { "Inventories" }
+    )]
     public async Task<IActionResult> CreateInventory([FromBody] CreateInventoryResource createInventoryResource)
     {
         try
@@ -35,6 +42,12 @@ public class InventoriesController(IInventoryCommandService inventoryCommandServ
     }
     
     [HttpPut("{id}")]
+    [SwaggerOperation(
+        Summary = "Update an inventory.",
+        Description = "Updates an inventory by its identifier.",
+        OperationId = "UpdateInventory",
+        Tags = new[] { "Inventories" }
+    )]
     public async Task<IActionResult> UpdateInventory([FromBody] UpdateInventoryResource updateInventoryResource, [FromRoute] int id)
     {
         try
@@ -58,6 +71,12 @@ public class InventoriesController(IInventoryCommandService inventoryCommandServ
     }
     
     [HttpGet]
+    [SwaggerOperation(
+        Summary = "Get all inventories.",
+        Description = "Retrieves all inventories.",
+        OperationId = "GetAllInventories",
+        Tags = new[] { "Inventories" }
+    )]
     public async Task<IActionResult> GetAllInventories()
     {
         var getAllInventoriesQuery = new GetAllInventoriesQuery();
@@ -67,6 +86,12 @@ public class InventoriesController(IInventoryCommandService inventoryCommandServ
     }
     
     [HttpGet("{id}")]
+    [SwaggerOperation(
+        Summary = "Get an inventory by its identifier.",
+        Description = "Retrieves an inventory by its identifier.",
+        OperationId = "GetInventoryById",
+        Tags = new[] { "Inventories" }
+    )]
     public async Task<IActionResult> GetInventoryById(int id)
     {
         var inventory = await inventoryQueryService.Handle(new GetInventoryByIdQuery(id));
@@ -76,6 +101,12 @@ public class InventoriesController(IInventoryCommandService inventoryCommandServ
     }
     
     [HttpDelete("{id}")]
+    [SwaggerOperation(
+        Summary = "Delete an inventory.",
+        Description = "Deletes an inventory.",
+        OperationId = "DeleteInventory",
+        Tags = new[] { "Inventories" }
+    )]
     public async Task<IActionResult> DeleteInventory(int id)
     {
         var deleteInventoryCommand = new DeleteInventoryCommand(id);
